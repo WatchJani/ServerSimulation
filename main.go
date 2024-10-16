@@ -11,9 +11,9 @@ func main() {
 	mux := http.NewServeMux()
 
 	fs := http.FileServer(http.Dir("./build"))
-	mux.Handle("/build/", http.StripPrefix("/build/", fs))
+	mux.Handle("/", fs)
 
-	mux.HandleFunc("GET /data/{link}", FileServer)
+	// mux.HandleFunc("GET /data/{link}", FileServer)
 
 	http.ListenAndServe(":5000", mux)
 }
